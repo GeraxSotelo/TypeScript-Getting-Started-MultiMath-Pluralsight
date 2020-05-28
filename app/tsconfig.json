@@ -1,0 +1,9 @@
+{
+    "extends": "../tsconfig",
+    "compilerOptions": {
+        "removeComments": true
+    },
+    "include": [ /*Takes an array of patterns to match*/
+        "./**/*" /*Two asterisks tell "include" to search recursively through all subdirectories. Specifying * for one of the path segments will tell the compiler to look for all valid TypeScript file extensions*/
+    ]
+}
