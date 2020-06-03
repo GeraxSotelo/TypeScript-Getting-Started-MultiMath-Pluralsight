@@ -1,9 +1,13 @@
 {
     "extends": "../tsconfig",
     "compilerOptions": {
-        "removeComments": true
+        "removeComments": true,
+        "outFile": "../js/app.js" /*looks at all of the file that get compiled, and directs all of the output to a single file, and makes sure the code in that file is ordered properly.*/
     },
-    "include": [ /*Takes an array of patterns to match*/
-        "./**/*" /*Two asterisks tell "include" to search recursively through all subdirectories. Specifying * for one of the path segments will tell the compiler to look for all valid TypeScript file extensions*/
+    // "include": [ /*Takes an array of patterns to match*/
+    //     "./**/*" /*Two asterisks tell "include" to search recursively through all subdirectories. Specifying * for one of the path segments will tell the compiler to look for all valid TypeScript file extensions*/
+    // ],
+    "files": [ /*Array of all the files you want the compiler to compile*/
+        "./app.ts" /*./app.ts is the staring point in the application*/
     ]
 }

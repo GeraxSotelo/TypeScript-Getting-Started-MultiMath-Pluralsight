@@ -1,3 +1,5 @@
+/// <reference path="player.ts" />
+
 function startGame() {
     //start a new game
 
@@ -58,14 +60,20 @@ function logError(err: string): void {
     console.error(err);
 }
 
-let myResult: Result = {
-    playerName: 'Marie',
-    score: 5,
-    problemCount: 5,
-    factor: 7
-}
+//demonstrate implementing interface with object literal
+// let myResult: Result = {
+//     playerName: 'Marie',
+//     score: 5,
+//     problemCount: 5,
+//     factor: 7
+// }
 
-let player: Person = {
-    name: 'Daniel',
-    formatName: () => "Dan"
-}
+// let player: Person = {
+//     name: 'Daniel',
+//     formatName: () => "Dan"
+// }
+
+
+const firstPlayer: Player = new Player();
+firstPlayer.name = "Gerax";
+console.log(firstPlayer.formatName());
