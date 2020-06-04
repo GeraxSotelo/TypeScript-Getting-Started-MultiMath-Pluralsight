@@ -17,7 +17,7 @@ class Scoreboard {
             output += '</h4>';
         }
 
-        const scoresElement: HTMLElement = document.getElementById('score');
+        const scoresElement: HTMLElement = document.getElementById('postedScores');
         scoresElement.innerHTML = output;
     }
 }

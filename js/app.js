@@ -30,7 +30,7 @@ var Scoreboard = (function () {
             output += result.playerName + ': ' + result.score + '/' + result.problemCount + ' for factor ' + result.factor;
             output += '</h4>';
         }
-        var scoresElement = document.getElementById('score');
+        var scoresElement = document.getElementById('postedScores');
         scoresElement.innerHTML = output;
     };
     return Scoreboard;
