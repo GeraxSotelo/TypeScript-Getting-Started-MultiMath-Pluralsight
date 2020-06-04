@@ -1,66 +1,91 @@
 /// <reference path="player.ts" />
+/// <reference path="game.ts" />
 
-function startGame() {
-    //start a new game
+let newGame: Game;
 
-    let playerName: string | undefined = getInputValue('playername');
-    logPlayer(playerName);
+//add click handler to the start game button
+document.getElementById('startGame')!.addEventListener('click', () => {
+    const player: Player = new Player();
+    player.name = Utility.getInputValue('playername');
 
-    postScore(100, playerName);
-    postScore(-5, playerName);
+    const problemCount: number = Number(Utility.getInputValue('problemCount'));
+    const factor: number = Number(Utility.getInputValue('factor'));
 
-    var messagesElement = document.getElementById('messages');
-    messagesElement!.innerText = 'Welcome to MultiMath! Started new game...';
-}
+    newGame = new Game(player, problemCount, factor);
+    newGame.displayGame();
+});
 
-//using a default initialized param makes that param optional
-function logPlayer(name: string = 'MultiMath Player'): void {
-    console.log(`New game starting for player: ${name}`);
-}
+//add click handler to the calculate score button
+document.getElementById('calculate')!.addEventListener('click', () => {
+    newGame.calculateScore();
+});
 
-//the question mark character flags the param as optional
-function postScore(score: number, playerName?: string): void {
-    //to give a var a fn type, add a colon after the var name, then put expected fn params & their types in parenthesis followed by an arrow & expected fn return type.
-    //this 'logger' var may now be assigned any fn that takes a single string param & returns void.
-    let logger: (value: string) => void;
 
-    if (score < 0) {
-        logger = logError;
-    }
-    else {
-        logger = logMessage;
-    }
+/**Old Code **/
 
-    const scoreElement: HTMLElement | null = document.getElementById('postedScores');
-    scoreElement!.innerText = `${score} - ${playerName}`;
+// /// <reference path="player.ts" />
 
-    logger(`Score: ${score}`);
-}
+// function startGame() {
+//     //start a new game
 
-//exclamation mark asserts that the object is non null
-document.getElementById('startGame')!.addEventListener('click', startGame);
+//     let playerName: string | undefined = getInputValue('playername');
+//     logPlayer(playerName);
 
-//compiler infers return type is void
-const logMessage = (message: string) => console.log(message);
+//     postScore(100, playerName);
+//     postScore(-5, playerName);
 
-function logError(err: string): void {
-    console.error(err);
-}
-
-//demonstrate implementing interface with object literal
-// let myResult: Result = {
-//     playerName: 'Marie',
-//     score: 5,
-//     problemCount: 5,
-//     factor: 7
+//     var messagesElement = document.getElementById('messages');
+//     messagesElement!.innerText = 'Welcome to MultiMath! Started new game...';
 // }
 
-// let player: Person = {
-//     name: 'Daniel',
-//     formatName: () => "Dan"
+// //using a default initialized param makes that param optional
+// function logPlayer(name: string = 'MultiMath Player'): void {
+//     console.log(`New game starting for player: ${name}`);
 // }
 
+// //the question mark character flags the param as optional
+// function postScore(score: number, playerName?: string): void {
+//     //to give a var a fn type, add a colon after the var name, then put expected fn params & their types in parenthesis followed by an arrow & expected fn return type.
+//     //this 'logger' var may now be assigned any fn that takes a single string param & returns void.
+//     let logger: (value: string) => void;
 
-const firstPlayer: Player = new Player();
-firstPlayer.name = "Gerax";
-console.log(firstPlayer.formatName());
+//     if (score < 0) {
+//         logger = logError;
+//     }
+//     else {
+//         logger = logMessage;
+//     }
+
+//     const scoreElement: HTMLElement | null = document.getElementById('postedScores');
+//     scoreElement!.innerText = `${score} - ${playerName}`;
+
+//     logger(`Score: ${score}`);
+// }
+
+// //exclamation mark asserts that the object is non null
+// document.getElementById('startGame')!.addEventListener('click', startGame);
+
+// //compiler infers return type is void
+// const logMessage = (message: string) => console.log(message);
+
+// function logError(err: string): void {
+//     console.error(err);
+// }
+
+// //demonstrate implementing interface with object literal
+// // let myResult: Result = {
+// //     playerName: 'Marie',
+// //     score: 5,
+// //     problemCount: 5,
+// //     factor: 7
+// // }
+
+// // let player: Person = {
+// //     name: 'Daniel',
+// //     formatName: () => "Dan"
+// // }
+
+
+// const firstPlayer: Player = new Player();
+// firstPlayer.name = "Gerax";
+// console.log(firstPlayer.formatName());
