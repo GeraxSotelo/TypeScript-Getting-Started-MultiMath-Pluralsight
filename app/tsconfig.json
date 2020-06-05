@@ -3,7 +3,10 @@
     "compilerOptions": {
         "removeComments": true,
         // "outFile": "../js/app.js", /*looks at all of the file that get compiled, directs all of the output to a single file, & makes sure the code in that file is ordered properly. Not comptaible with all module formats.*/
-        "module": "commonjs" /*specify which module format the compiler should output.*/
+        "module": "commonjs", /*specify which module format the compiler should output.*/
+        "moduleResolution": "node",
+        "traceResolution": true,
+        //"baseUrl": "./modules" //all non-relative imports will happen relative to this baseUrl
     },
     // "include": [ /*Takes an array of patterns to match*/
     //     "./**/*" /*Two asterisks tell "include" to search recursively through all subdirectories. Specifying * for one of the path segments will tell the compiler to look for all valid TypeScript file extensions*/
